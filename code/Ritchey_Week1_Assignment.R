@@ -9,7 +9,7 @@
 a<- c("matt","classroom","Susquehanna","mouse","keyboard","map","pen","laptop","clock","lamp","trash","coat","rain","docs","board")
 a
   # One character vector with exactly 3 unique values
-b<- c("cat","dog","lizard","zebra","dog","lizard","horse","cat","horse","elephant","horse","turkey","cat","dog","lizard")
+b<- c("cat","dog","lizard","zebra","dog","lizard","horse","cat","horse","elephant","horse","turkey","cat","dog","lizard")#many more than three unique values.
 b
   # One numeric vector with all unique values
 c<- c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
@@ -40,25 +40,25 @@ df
 # Remove the character vector with unique values from the data frame.
 #Okay uhm I didn't know how to do this in the first place I'M SORRY
 df[1,]
-df[-1,]
+df[-1,] #this only displays the data frame without those values, it doesn't create a new object. You need the <- for that.
   #I don't know if this works but it did something 
 
 
 # Add 1 row with unique numeric values to the data frame.
 #again, now i am lost but I promise i am trying 
-binary.solo <- c(1,1,0,0,1,1)
+binary.solo <- c(1,1,0,0,1,1) #too many values in this.
 
-new.df <- cbind(df.a, binary.solo)
+new.df <- cbind(df.a, binary.solo) #you got an error from this line - that should have been a sign to stop and figure out what happened.
 new.df
 
-df.r <- rbind(df.a,binary.solo)
+df.r <- rbind(df.a,binary.solo) #What is df.a? You have not created this and you're calling for it in a function.
 df.r
 
 #this doesn't feel right 
 
 # Export the data frame as a .csv file 
 df <- data.frame
-write.csv(df,"C:\\Users\\Desktop)
+write.csv(df,"C:\\Users\\Desktop)#this is not the right location - you are also missing the end quote and need one slash instead of two.
 
 # Generate summary statistics of your data frame and copy them as text into your script under a new section heading.
 
