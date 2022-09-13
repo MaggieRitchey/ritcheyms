@@ -42,11 +42,13 @@ df.sd<-aggregate(df1$d~df1$b, FUN="sd")
 
 colnames(df.sd)<-c("Factor","StanDev")
 
-b.plot<-barplot(df.mean$Mean, names.arg=df.mean$Factor, ylim=c(0,5))
+b.plot<-barplot(df.mean$Mean, names.arg=df.mean$Factor, ylim=c(0,15))
 
 arrows(b.plot, df.mean$Mean-df.sd$StanDev, b.plot, df.mean$Mean+df.sd$StanDev, angle=90, code=3)
 
-barplot(df.mean$Mean, names.arg=df.mean$Factor, ylim= c(0,5), horiz= TRUE)
+
+
+
 # Create a scatter plot between two of your numeric columns.
   # Change the point shape and color to something NOT used in the example.
   # Change the x and y labels and add a title
