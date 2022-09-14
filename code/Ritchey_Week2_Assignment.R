@@ -25,7 +25,7 @@ df1
 # Create a barplot for one numeric column, grouped by the character vector with 3 unique values
   # Add error bars with mean and standard deviation to the plot
   # Change the x and y labels and add a title
-  # Export the plot as a PDF that is 4 inches wide and 7 inches tall.
+  # Export the plot as a PDF that is 4 inches wide and 7 inches tall. #Didn't export with the right dimensions
 
 ?aggregate
 df.mean<-aggregate(df1$d~df1$b, FUN = 'mean')
@@ -63,7 +63,7 @@ plot(df1$e~df1$c, xlab="Explanatory", ylab= "Response")
 plot(df1$e~df1$c, xlab ="Explanatory", ylab="Repsonse", main = "Maggies Scatterplot")
 plot(df1$e~df1$c, xlab ="Explanatory", ylab="Repsonse", main = "Maggies Scatterplot", cex.axis=0.8)
 plot(df1$e~df1$c, xlab ="Explanatory", ylab="Repsonse", main = "Maggies Scatterplot", cex.axis=0.8, cex.main=0.5)
-plot(df1$e~df1$c, xlab ="Explanatory", ylab="Repsonse", main = "Maggies Scatterplot", cex.axis=0.8, cex.main=1.25, cex.lab=1.25, pch=22, col='tomato2')
+plot(df1$e~df1$c, xlab ="Explanatory", ylab="Repsonse", main = "Maggies Scatterplot", cex.axis=0.8, cex.main=1.25, cex.lab=1.25, pch=22, col='tomato2')#Supposed to change the x and y labels. Otherwise everything looks good!
 
 ?pch
 ??color
