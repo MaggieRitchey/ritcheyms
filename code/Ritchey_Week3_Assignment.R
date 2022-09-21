@@ -34,7 +34,7 @@ install.packages("vegan")
 library(vegan)
 
 install.packages("simboot")
-library(simboot)
+library(simboot)#your use of this package made the rest of your code break. I had to restart and bypass this in order to rerun.
 
 
 
@@ -67,7 +67,8 @@ unbias.simp <- simpson.unb(BCI)
 alpha <- fisher.alpha(BCI)
 ## Plot all
 pairs(cbind(H, simp, unbias.simp, alpha), pch="+", col="blue")
-        
+        #This does not modify the actual outputs, only removes the inverse Simpson metric from the output.
+
           # Diversity metrics are frequently used in community ecology for reasons ranging from a quick comparison between sites to understanding community stability.
           # Their calculation can be very tedious by hand - and very fast with a package designed for the operation.
 
