@@ -5,7 +5,7 @@ library(dplyr)
 library(reshape2)
 
 
-data <- read.csv(file=("/Users/matt/Documents/Dropbox/LifeCycleRevision/ScientificReports/Dryad/Figure4Data.csv"), header=T)
+data <- read.csv(file=("C:/GitHub/ritcheyms/data/Figure4Data.csv"), header=T)
 
 # Originally (in 2017-04-12 script) I used unweighted means for ordering strains
 #  but used weighted means for plotting size distributions
