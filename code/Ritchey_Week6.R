@@ -16,9 +16,8 @@ summary(glmm.mod1 <- glmmPQL(claw.width + carapace.width + eaten~temperature, fa
 
 
 summary(glmm.mod2 <-glmmPQL(claw.width + carapace.width + eaten ~toadfish.cue.treatment, family = gaussian, random = ~1 |block, data = df))
-
+#These models are backwards. You have y1+y2+y3~X instead of y~x1+x2+x3. Also need one model to be interactive (*) and one additive (+)
 ?glmm.mod
-
     # In the other model include one interactive effect.
 #I am having trouble distinguishing between additive effect versus an interactive effect, so I am sorry if the above steps are wrong,
 #     also i could not figure out how to add them into one line of code
@@ -30,13 +29,17 @@ df$prop.cons <- df$eaten/df$prey
 
 # (Q1) - The code in line 8 is performing two operations at once. What are they? (2 pts)
 #Goodness of fit and correlation
+#It is creating a new column and calculating a proportion.
 
 # (Q2) - Did the interactive effect change which variables predict proportional consumption? How, specifically, did the results change? (5 pts)
 #
-#Yes, actual correlation scores in the summary 
+#Yes, actual correlation scores in the summary.
+#Pointing to the summary does not explain how the results changed. The point is for you to make that interpretation.
+
 # (Q3) - Plot the residuals of both models. Do you think either model is a good fit? Why or why not? (3 pts)
 plot(gam.mod1$residuals)
 plot(gam.mod2$residuals)
+#These are supposed to be plots of the GLMM residuals, not the GAMs (yet). Is either model a good fit?
 
 # Re-run both models as generalized additive models instead (using gam). Then compare the AIC of both models. (4 points each)
 gam.mod1<-gam(claw.width + carapace.width + eaten~temperature, family = gaussian, random = ~ 1 |block , data = df)
@@ -55,7 +58,7 @@ AIC(gam.mod1,gam.mod2)
 #I am confident gam.mod1 is a better fit due to the lower AIC score, the higher r-squared value, and the randomness the
 #residuals have when plotted. 
 
-
+#Both of these show clear patterns in the residuals. 
 
 
 
