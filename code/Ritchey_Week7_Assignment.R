@@ -61,10 +61,22 @@ legend("topright", c("Cute bunnies", "Rabid foxes"), lty = c(1,2), col = c(1,2),
 # change the default parameters of the L-V model to best approximate the relationship between Limncalanus and D.mendotae, 
 #assuming both plots are on the same time scale.
 
+matplot(out[,-1], type = "l", xlab = "time", ylab = "population")
+legend("topright", c("D.mendotae", "Limncalanus"), lty = c(1,2), col = c(1,2), box.lwd = 0)
+
+Pars <- c(alpha = 5, beta = 1.5, gamma = .2, delta = .5)
+out <- as.data.frame(ode(func = LotVmod, y = State, parms = Pars, times = Time))
+
 # What are the changes you've made to alpha, beta, gamma, and delta from the default values;
 #and what do they say in a relative sense about the plankton data? (4 pts)
+#I increased alpha and beta. I decreased delta. I kept gamma the same. It was difficult trying to get the prey to decrease linearly 
+#while changing other values. This could say that in the plankton data, d.mendotae is resistant to going below their carrying capactiy
+#even in spikes of predation, the carrying capacity remains consistent.
 
 # Are there other paramenter changes that could have created the same end result? (2 pts)
+
+#Having higher prey poplation with a higher delta value.
+
 # Export your final L-V plot with a legend that includes the appropriate genus and/or species name as if the model results were the real plankton data, 
 # and upload with your script. (hint - remember which one is the predator and which is the prey)
 
