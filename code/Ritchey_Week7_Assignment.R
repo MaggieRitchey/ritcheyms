@@ -67,6 +67,8 @@ legend("topright", c("D.mendotae", "Limncalanus"), lty = c(1,2), col = c(1,2), b
 Pars <- c(alpha = 5, beta = 1.5, gamma = .2, delta = .5)
 out <- as.data.frame(ode(func = LotVmod, y = State, parms = Pars, times = Time))
 
+#Bonus points for the best match! This is really good.
+
 # What are the changes you've made to alpha, beta, gamma, and delta from the default values;
 #and what do they say in a relative sense about the plankton data? (4 pts)
 #I increased alpha and beta. I decreased delta. I kept gamma the same. It was difficult trying to get the prey to decrease linearly 
