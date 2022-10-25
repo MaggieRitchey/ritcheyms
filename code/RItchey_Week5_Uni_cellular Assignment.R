@@ -10,10 +10,11 @@ library(ggplot2)
 ggsave(filename=paste("C:/GitHub/ritcheyms/data",
                       paste("Figure4", ".png", sep=""), sep=""), plot=myplot,
        width = 10, height = 4, bg = 'transparent')
-
+#This section of code does not work without the other 107 lines inbetween.
 
   # Export and save the plot you've created. (2 points)
   # Zoom into your plot to look at the distribution for different strains.
+#Where is the plot? 
 
 # Do all of the strains in the plot have the same distributions (yes/no)? (2 pt)
 #no
@@ -21,6 +22,8 @@ ggsave(filename=paste("C:/GitHub/ritcheyms/data",
 # Based on these observations of your strain distributions, why did the authors use a Kruskal-Wallis test rather than ANOVA to compare the strains? (2 pts)
 
 #there is no assumption on how the data will be distributed
+#i.e. not normal data?
+
 # Use the fitdist() and gofstat() functions to compare the poisson, negative binomial, and logistic distributions for:
 ?fitdist
 ?gofstat
@@ -30,6 +33,9 @@ ggsave(filename=paste("C:/GitHub/ritcheyms/data",
     #HINT- "Num.Cells.Progeny" has defined breaks. To display results, use the formula with the "chisqbreaks" argument as follows:
       #gofstat(list(fit.1, fit.2, fit.3, etc), chisqbreaks=c(1,2,4,8,16,32,64))
 data <- na.omit(data)
+#Need the libraries for these functions.
+library(fitdistrplus)
+library(logspline)
 
 fit.logis <- fitdist(data$Num.Cells.Progeny, distr = "logis")
 fit.pois<-fitdist(data$Num.Cells.Progeny,distr = "pois")
@@ -46,9 +52,10 @@ gofstat(list(fit.logis,fit.pois,fit.nbinom))
 # Based on the AIC scores, which distribution is the best fit for: (4 pts)
   # (1) - The number of cells of progeny (data$Num.Cells.Progeny)?
   #1-mle-logis
+#Logistic is the distribution,.
   # (2) - The replication time (data$RepTime.sec)?
   #3-mle-nbinom
-
+#Negative binomial
 
 # Plot a generic histogram for the replication time (data$RepTime.sec) (2 pt)
 hist(data$RepTime.sec)
@@ -56,6 +63,7 @@ hist(data$RepTime.sec)
 # Based on the patterns of this histograms and Figure 4:
   #Give one hypothesis for an evolutionary process represented by the two tallest bars in your histogram. (6 pts)
 #A change in the rate of predation represented in this historgram, due to something like human interaction or natural disaster
+#This could lead to an evolutionary process, but is only part of an answer.
   # Don't cheat by looking at the paper! 
     # This hypothesis does not need to be correct - it only needs to be ecologically rational based these two figures.
 
