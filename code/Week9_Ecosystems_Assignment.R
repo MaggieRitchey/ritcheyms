@@ -53,6 +53,38 @@ plot(ord2, ylim = c(-2,2), xlim = c(-5,5))
 ord.int <- rda(vege.means2 ~1, abiotic.means2)
 plot(ord.int, ylim = c(-2,2), xlim = c(-5,5)) 
 
+mod1<-lm(vege.means2~pH + totalN + Perc_ash + Kalium + Magnesium + Ca + Al + TotalP + OlsenP, abiotic.means2)
+summary(mod1)
+anova(mod1)
+AIC(mod1)
+plot(mod1$residuals)
+
+mod2<-lm(vege.means2~pH+Perc_ash+Kalium+Magnesium+Ca, abiotic.means2)
+summary(mod2)
+anova(mod2)
+AIC(mod2)
+plot(mod2$residuals)
+
+
+mod3<-lm(vege.means2~pH+Kalium+Magnesium+Ca, abiotic.means2)
+summary(mod3)
+anova(mod3)
+AIC(mod3)
+plot(mod3$residuals)
+
+mod4<-lm(vege.means2~pH+Magnesium+Ca, abiotic.means2)
+summary(mod4)
+anova(mod4)
+AIC(mod4)
+plot(mod4$residuals)
+#This seems to be the best linear model! It is not too overfitted like mod1 and not underfitted like mod5 which shows no significance between any variable
+
+mod5<-lm(vege.means2~Magnesium+Ca, abiotic.means2)
+summary(mod5)
+anova(mod5)
+AIC(mod5)
+plot(mod5$residuals)
+
 
 ord3 <- rda(vege.means2 ~ totalN, abiotic.means2)
 ord3
