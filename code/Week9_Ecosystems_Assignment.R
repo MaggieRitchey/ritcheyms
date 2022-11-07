@@ -137,9 +137,12 @@ plot(ord11)
 #When plotted, there are no intercepts meaning there are no significant ecological predictors between abiotic and vegetation plots between all sites.
 #Al seems to be the closest to significant out of all the factors. When breaking it down, we can be sure that no factors are influencing
 #the vegetative plots. This is important to understand relationships within a community, or even the lack thereof. 
+#Significant intercepts don't say much about the variables or their relationship. 
+#Given that you looked at every plant species (using the whole community data frame instead of a single vector) you did have a few intersting comparisons in there other than Al.
+
 
 # (Q3 - 6 pts) Provide a 3-4 sentence synthesis of how these results relate to one another and the value of considering both together for interpreting biotic-abiotic interactions.
 #The fact that these factors do not significantly relate to one another actually tells us a lot. This method can be used to actually eliminate relationships in which
 #these vegetation plots were not significantly related to the abiotic factors. This shows that species found in these plots are not influences by abiotic factors
 #or the abiotic data set as a whole. This signifies it is completely independent from these parameters with no relation. 
-
+#This is all true until you think about the linear models together with the rda. For a few species, abiotics mattered, just not for the community as a whole.
