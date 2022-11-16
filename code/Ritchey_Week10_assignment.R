@@ -134,12 +134,14 @@ HabNoSpace.rda5
 anova(HabNoSpace.rda5, perm.max = 10000)
 RsquareAdj(HabNoSpace.rda5)
 
-
+#Why are you comparing different community groups against each other instead of using habitat?
+#I'm not sure how to interpret what you did here.
 
 
 
 #Part 2: What is your interpretation of the pattern for each group individually, and the two in comparison, based on their mobility? (5 points)
 #Although I did recieve a few errors, I think the pattern with their rating of how good they were at flying vs their rate of movements with clinging and sprawling had a correlation
+#What do you mean by clingers and sprawlers having a correlation? Constrained variance for one vs the other?
 
 #Part 3: For each of your chosen groups of bugs, perform variable selection for the habitat data rather than the AEM data. Which habitat variables are significant for each? (10 points)
   # Definitions for the habitat column names:
@@ -218,10 +220,13 @@ RsquareAdj(NonNoSpace.rda)
 
 
 #Matt idk what is happening right now I am so confused on everything and what it means 
+#What you did in part 3 is what you were supposed to do in part 1. Part 3 was about selecting habitat variables instead of space, not in addition to.
 
 
 #Part 4: How do you expect selecting both the spatial and the habitat variables would change the results of the RDAs from Part 1 above? (5 points)
   #(You do not need to redo the RDAs, unless you *want* to.)
 #Flying insects vs non flying insects would be found at different spatial heights which would also affect the habitat they are found in 
+#While potentially true, this answer is not relevant to the question. Without selecting variables for habitat, you are likely overfitting that part of the model.
+#So the "real" influence of space is likely much stronger than what you generated with the above models.
 
 
