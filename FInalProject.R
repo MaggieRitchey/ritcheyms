@@ -65,13 +65,77 @@ colnames(F1T_sonE_control)<-c("scaffold","starting","strand","CpG","meth","cover
 F1T_sonE_nutrition<-read.table("F1T_sonE_nutrition.txt", header=TRUE)
 colnames(F1T_sonE_nutrition)<-c("scaffold","starting","strand","CpG","meth","coverage")
 
+
 #Now I will move onto the heat changes experiment, starting with liver coverage levels.
 
 setwd("C:/Users/ritch/OneDrive/Desktop/HeatChanges/F1L_coverage_MethLevels")
 
 
+F1L_sonF_controlheat<-read.table("F1L_sonF_controlheat.txt", header=TRUE)
+colnames(F1L_sonF_controlheat)<-c("scaffold","starting","strand","CpG","meth","coverage")
 
-#blah
+F1L_sonF_heat<-read.table("F1L_sonF_heat.txt", header=TRUE)
+colnames(F1L_sonF_heat)<-c("scaffold","starting","strand","CpG","meth","coverage")
+
+F1l_sonG_controlheat<-read.table("F1l_sonG_controlheat.txt", header=TRUE)
+colnames(F1l_sonG_controlheat)<-c("scaffold","starting","strand","CpG","meth","coverage")
+
+F1L_sonG_heat<-read.table("F1L_sonG_heat.txt", header=TRUE)
+colnames(F1L_sonG_heat)<-c("scaffold","starting","strand","CpG","meth","coverage")
+
+F1L_sonH_controlheat<-read.table("F1L_sonH_controlheat.txt", header=TRUE)
+colnames(F1L_sonH_controlheat)<-c("scaffold","starting","strand","CpG","meth","coverage")
+
+F1L_sonH_heat<-read.table("F1L_sonH_heat.txt", header=TRUE)
+colnames(F1L_sonH_heat)<-c("scaffold","starting","strand","CpG","meth","coverage")
+
+F1L_sonI_controlheat<-read.table("F1L_sonI_controlheat.txt", header=TRUE)
+colnames(F1L_sonI_controlheat)<-c("scaffold","starting","strand","CpG","meth","coverage")
+
+F1L_sonI_heat<-read.table("F1L_sonI_heat.txt", header=TRUE)
+colnames(F1L_sonI_heat)<-c("scaffold","starting","strand","CpG","meth","coverage")
+
+F1L_sonJ_controlheat<-read.table("F1L_sonJ_controlheat.txt", header=TRUE)
+colnames(F1L_sonJ_controlheat)<-c("scaffold","starting","strand","CpG","meth","coverage")
+
+F1L_sonJ_heat<-read.table("F1L_sonJ_heat.txt", header=TRUE)
+colnames(F1L_sonJ_heat)<-c("scaffold","starting","strand","CpG","meth","coverage")
 
 
+#Next, i read in the testes levels from the heat change experiment.
+
+setwd("C:/Users/ritch/OneDrive/Desktop/HeatChanges/F1T_coverage_MethLevels")
+
+
+F1T_sonF_controlheat<-read.table("F1T_sonF_controlheat.txt", header=TRUE)
+colnames(F1T_sonF_controlheat)<-c("scaffold","starting","strand","CpG","meth","coverage")
+
+F1T_sonF_heat<-read.table("F1T_sonF_heat.txt", header=TRUE)
+colnames(F1T_sonF_heat)<-c("scaffold","starting","strand","CpG","meth","coverage")
+
+F1T_sonG_controlheat<-read.table("F1T_sonG_controlheat.txt", header=TRUE)
+colnames(F1T_sonG_controlheat)<-c("scaffold","starting","strand","CpG","meth","coverage")
+
+F1T_sonG_heat<-read.table("F1T_sonG_heat.txt", header=TRUE)
+colnames(F1T_sonG_heat)<-c("scaffold","starting","strand","CpG","meth","coverage")
+
+F1T_sonH_controlheat<-read.table("F1T_sonH_controlheat.txt", header=TRUE)
+colnames(F1T_sonH_controlheat)<-c("scaffold","starting","strand","CpG","meth","coverage")
+
+F1T_sonH_heat<-read.table("F1T_sonH_heat.txt", header=TRUE)
+colnames(F1T_sonH_heat)<-c("scaffold","starting","strand","CpG","meth","coverage")
+
+F1T_sonI_controlheat<-read.table("F1T_sonI_controlheat.txt", header=TRUE)
+colnames(F1T_sonI_controlheat)<-c("scaffold","starting","strand","CpG","meth","coverage")
+
+F1T_sonI_heat<-read.table("F1T_sonI_heat.txt", header=TRUE)
+colnames(F1T_sonI_heat)<-c("scaffold","starting","strand","CpG","meth","coverage")
+
+F1T_sonJ_controlheat<-read.table("F1T_sonJ_controlheat.txt", header=TRUE)
+colnames(F1T_sonJ_controlheat)<-c("scaffold","starting","strand","CpG","meth","coverage")
+
+F1T_sonJ_heat<-read.table("F1T_sonJ_heat.txt", header=TRUE)
+colnames(F1T_sonJ_heat)<-c("scaffold","starting","strand","CpG","meth","coverage")
+
+#Now, we move onto data analysis! Yippie!
 setwd("C:/GitHub/ritcheyms")
