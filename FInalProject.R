@@ -219,7 +219,11 @@ ExcelData=read_excel('ExcelFinalSheet.xlsx')
 meth<-subset(ExcelData,ExcelData$factor=="meth")
 coverage<-subset(ExcelData, ExcelData$factor=="coverage")
 
-lmmethchange<-lm(ExcelData$meth~ExcelData$%change)
+
+
+lmmethchange<-lm(meth$change~meth$organ + meth$experiment)
+summary(lmmethchange)
+
 
 ?lm
 
