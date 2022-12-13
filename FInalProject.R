@@ -138,6 +138,7 @@ F1T_sonJ_heat<-read.table("F1T_sonJ_heat.txt", header=TRUE)
 colnames(F1T_sonJ_heat)<-c("scaffold","starting","strand","CpG","meth","coverage")
 
 #Now, we move onto data analysis! Yippie!
+
 #First I am going to calculate percent change from the means of control groups vs their treatments
 #Again, lets start with the diet experiment and testes data
 
@@ -221,12 +222,37 @@ coverage<-subset(ExcelData, ExcelData$factor=="coverage")
 
 
 
-lmmethchange<-lm(meth$change~meth$organ + meth$experiment)
+lmmethchange<-lm(meth$change~meth$organ)
+plot(lmmethchange)
 summary(lmmethchange)
 
 
+lmcoveragechange<-lm(coverage$change~coverage$organ)
+summary(lmcoveragechange)
+plot(lmcoveragechange)
+
+
+#Kruskal-Wallis test
+
+kruskal.test(meth$change~meth$organ + meth$experiment)
+
+
+MeanMethLiverDiet<-mean(F1L_sonA_control$meth+F1L_sonB_control$meth+F1L_sonC_control$meth+F1L_sonD_control$meth+F1L_sonE_control$meth+F1L_sonA_nutrition$meth+F1L_sonB_nutrition$meth+F1L_sonC_nutrition$meth+F1L_sonD_nutrition$meth+F1L_sonE_nutrition$meth)
+
+ControlGroups<-c(F1L_sonA_control$meth+F1L_sonB_control$meth+F1L_sonC_control$meth+F1L_sonD_control$meth+F1L_sonE_control$meth)
+TreatmentGroups<-c(F1L_sonA_nutrition$meth+F1L_sonB_nutrition$meth+F1L_sonC_nutrition$meth+F1L_sonD_nutrition$meth+F1L_sonE_nutrition$meth)
+kruskal.test(list(ControlGroups, TreatmentGroups))
+
+install.packages("ggpubr")
+library("ggpubr")
+
+
+Groups<-c(ControlGroups, TreatmentGroups)
+test<-factor(rep)
+??kruskal
 ?lm
 
 
 
 setwd("C:/GitHub/ritcheyms")
+
