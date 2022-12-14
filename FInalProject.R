@@ -7,7 +7,8 @@
 
 #Each file is separate, so begin with downloading them and unzipping. Due to the size, I was unable to upload these into a repository. Instead, I will set my working directory to a seperate space
   #to read them in
-#The files are in the form of .meth files. To use them in excel, you must manually change them into .txt and changing the names to better represent the data. Along with reading them in, I am including the column names for each data set.
+#The files are in the form of .meth files. To use them in excel, you must manually change them into .txt and changing the names to better represent the data. Along with reading them in, 
+  #I am including the column names for each data set as each one has the same names. 
 
 #First I will read in the diet change experiment 
 setwd("C:/Users/ritch/OneDrive/Desktop/DietChanges/F1L_and F1T_coverage_MethLevels/F1L_and F1T_coverage_MethLevels")
@@ -146,6 +147,9 @@ colnames(F1T_sonJ_heat)<-c("scaffold","starting","strand","CpG","meth","coverage
 
 
 #First I am going to calculate percent change from the means of control groups vs their treatments
+#to do this, take the mean values from each guinea pig son, and subtract the control from the treatment.
+#This will be done with the methylation values and the coverage values as this is relevant to study epigenetic effects. 
+#I am noting each value afterwards, which will be helpful when creating an excel sheet in the next step.
 #Again, lets start with the diet experiment and testes data
 
 mean(F1T_sonA_nutrition$meth)-mean(F1T_sonA_control$meth) #0.05828337
@@ -221,6 +225,7 @@ library(readxl)
 setwd("C:/GitHub/ritcheyms")
 #I saved this excel into my GitHUb as it will fit here, compared to the other data. 
 ExcelData=read_excel('ExcelFinalSheet.xlsx')
+#the columns include the experiment, son, factor (methylation or coverage), the percent change, and which organ is affected. L is for liver and T is for testes.
 
 #Change methylation and coverage to subsets under the "factor" category to continue tests
 meth<-subset(ExcelData,ExcelData$factor=="meth")
@@ -231,27 +236,26 @@ coverage<-subset(ExcelData, ExcelData$factor=="coverage")
 #Create linear model for the subset of methylation and coverage
 
 lmmethchange<-lm(meth$change~meth$organ)
-plot(lmmethchange)
-summary(lmmethchange)
+plot((lmmethchange), main="Methylation Changes In Organs", sub="Change Approximated By Organ")
+summary(lmmethchange)#not significant
 
 
 lmcoveragechange<-lm(coverage$change~coverage$organ)
-plot(lmcoveragechange)
-summary(lmcoveragechange)
+plot(lmcoveragechange, main="Coverage Changes In Organs", sub="Change Approximated By Organ")
+summary(lmcoveragechange)#not significant
 
 #Kruskal-Wallis test on the methylation and coverage, again using the subsets. 
 
 KWTEST<-kruskal.test(meth$change~meth$organ)
 print(KWTEST)
-boxplot(meth$change~meth$organ)#not significant
+boxplot((meth$change~meth$organ), main="Percent Change in Methylation vs Organ", ylab="Methylation", xlab="Organ")#not significant
 
 
 KWTEST2<-kruskal.test(coverage$change~coverage$organ)
 print(KWTEST2)
-boxplot(coverage$change~coverage$organ)#not significant
+boxplot((coverage$change~coverage$organ), main="Percent Change in Coverage vs Organ", ylab="Coverage", xlab="Organ")#not significant
 
-
-
+#It can be concluded that there is no significant relationship between the percent change of epigenetic effects between the liver and testes between the two experiments. 
 
 
 setwd("C:/GitHub/ritcheyms")
