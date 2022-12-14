@@ -1,6 +1,13 @@
+#Epigenetic changes in guinea pigs: Diet vs Heat
 
-#first i need to read in my files for my project, which is in the form of a .meth file. I go into each file, and convert it into a .txt file. I then read it into
-#r. The two experiments have their own working directories. After reading them in, I will insert their column names. 
+#Data was obtained from DataDryad from our friends at the Leibniz Institute for Zoo and Wildlife Research. Below are the links to find the data sets.
+
+#Changes in Diet: https://datadryad.org/stash/dataset/doi:10.5061%2Fdryad.7bg3t6s
+#Changes in Heat: https://datadryad.org/stash/dataset/doi:10.5061%2Fdryad.0f8q1
+
+#Each file is separate, so begin with downloading them and unzipping. Due to the size, I was unable to upload these into a repository. Instead, I will set my working directory to a seperate space
+  #to read them in
+#The files are in the form of .meth files. To use them in excel, you must manually change them into .txt and changing the names to better represent the data. Along with reading them in, I am including the column names for each data set.
 
 #First I will read in the diet change experiment 
 setwd("C:/Users/ritch/OneDrive/Desktop/DietChanges/F1L_and F1T_coverage_MethLevels/F1L_and F1T_coverage_MethLevels")
@@ -137,7 +144,6 @@ colnames(F1T_sonJ_controlheat)<-c("scaffold","starting","strand","CpG","meth","c
 F1T_sonJ_heat<-read.table("F1T_sonJ_heat.txt", header=TRUE)
 colnames(F1T_sonJ_heat)<-c("scaffold","starting","strand","CpG","meth","coverage")
 
-#Now, we move onto data analysis! Yippie!
 
 #First I am going to calculate percent change from the means of control groups vs their treatments
 #Again, lets start with the diet experiment and testes data
@@ -209,18 +215,20 @@ mean(F1L_sonI_heat$coverage)-mean(F1L_sonI_controlheat$coverage)#116.0032
 mean(F1L_sonJ_heat$meth)-mean(F1L_sonJ_controlheat$meth)#-0.003186264
 mean(F1L_sonJ_heat$coverage)-mean(F1L_sonJ_controlheat$coverage)#-12.06475
 
-#So now, this data can be put into excel sheet. Then we use 'readxl' to bring in the data. 
+#So now, this data can be put into excel sheet, including percent change as a column. Then we use 'readxl' to bring in the data. 
 install.packages("readxl")
 library(readxl)
 setwd("C:/GitHub/ritcheyms")
 #I saved this excel into my GitHUb as it will fit here, compared to the other data. 
 ExcelData=read_excel('ExcelFinalSheet.xlsx')
 
-#Before we make linear models, we need to explain that meth and coverage are subsets under the "factor" category
+#Change methylation and coverage to subsets under the "factor" category to continue tests
 meth<-subset(ExcelData,ExcelData$factor=="meth")
 coverage<-subset(ExcelData, ExcelData$factor=="coverage")
 
 
+#Finally, we examine the differences between percent change and the affected organ compared between methylation and coverage. 
+#Create linear model for the subset of methylation and coverage
 
 lmmethchange<-lm(meth$change~meth$organ)
 plot(lmmethchange)
@@ -228,29 +236,21 @@ summary(lmmethchange)
 
 
 lmcoveragechange<-lm(coverage$change~coverage$organ)
-summary(lmcoveragechange)
 plot(lmcoveragechange)
+summary(lmcoveragechange)
+
+#Kruskal-Wallis test on the methylation and coverage, again using the subsets. 
+
+KWTEST<-kruskal.test(meth$change~meth$organ)
+print(KWTEST)
+boxplot(meth$change~meth$organ)#not significant
 
 
-#Kruskal-Wallis test
-
-kruskal.test(meth$change~meth$organ + meth$experiment)
-
-
-MeanMethLiverDiet<-mean(F1L_sonA_control$meth+F1L_sonB_control$meth+F1L_sonC_control$meth+F1L_sonD_control$meth+F1L_sonE_control$meth+F1L_sonA_nutrition$meth+F1L_sonB_nutrition$meth+F1L_sonC_nutrition$meth+F1L_sonD_nutrition$meth+F1L_sonE_nutrition$meth)
-
-ControlGroups<-c(F1L_sonA_control$meth+F1L_sonB_control$meth+F1L_sonC_control$meth+F1L_sonD_control$meth+F1L_sonE_control$meth)
-TreatmentGroups<-c(F1L_sonA_nutrition$meth+F1L_sonB_nutrition$meth+F1L_sonC_nutrition$meth+F1L_sonD_nutrition$meth+F1L_sonE_nutrition$meth)
-kruskal.test(list(ControlGroups, TreatmentGroups))
-
-install.packages("ggpubr")
-library("ggpubr")
+KWTEST2<-kruskal.test(coverage$change~coverage$organ)
+print(KWTEST2)
+boxplot(coverage$change~coverage$organ)#not significant
 
 
-Groups<-c(ControlGroups, TreatmentGroups)
-test<-factor(rep)
-??kruskal
-?lm
 
 
 
