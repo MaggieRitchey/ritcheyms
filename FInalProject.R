@@ -243,6 +243,9 @@ summary(lmmethchange)#not significant
 lmcoveragechange<-lm(coverage$change~coverage$organ)
 plot(lmcoveragechange, main="Coverage Changes In Organs", sub="Change Approximated By Organ")
 summary(lmcoveragechange)#not significant
+#These plot outputs are for identifying if the model is appropriate, not for displaying data relationships.
+#Would need boxplot(coverage$change~coverage$organ)instead, which is what you have below.
+#A plot related to variance might have worked better here (if you want to learn more about that let me know!)
 
 #Kruskal-Wallis test on the methylation and coverage, again using the subsets. 
 
